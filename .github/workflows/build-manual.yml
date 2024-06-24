@@ -29,3 +29,12 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}
           path: build/libs
+
+      - name: Upload To Github Release
+        uses: xresloader/upload-to-github-release@v1.6.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "build/libs/*.jar"
+          tags: false
+          draft: true
